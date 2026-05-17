@@ -546,9 +546,11 @@ export default function App() {
 
                 {/* Card overlay details */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-              
-
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="glass px-6 py-3 rounded-2xl inline-block group-hover:bg-brand-green transition-colors duration-500">
+                      <span className={cn("text-xs font-black uppercase tracking-[0.2em] group-hover:text-brand-dark transition-colors", isDarkMode ? "text-brand-green" : "text-brand-dark")}>Lead Dev</span>
+                    </div>
+                  </div>
                   <div className="flex justify-between items-end">
                     <div>
                       <p className="text-[10px] font-black text-brand-green uppercase tracking-[0.4em] mb-1">UI/UX Desainer</p>
