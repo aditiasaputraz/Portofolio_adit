@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-green: #10B981;
+  --color-brand-green-dark: #059669;
+  --color-brand-dark: #000000;
+  --color-brand-cream: #FAFAFA;
+  --color-brand-white: #FFFFFF;
+  --color-brand-soft-green: #F0FDFA;
+  
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 3rem;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-cream text-slate-900 selection:bg-brand-green selection:text-brand-dark font-sans transition-colors duration-500 overflow-x-hidden;
+    background: radial-gradient(circle at 10% 10%, #F0FDFA 0%, transparent 40%), radial-gradient(circle at 90% 90%, #F1F5F9 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+  
+  .dark body {
+    @apply bg-[#050505] text-white/90;
+    background: 
+      radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 1) 0%, transparent 50%),
+      #050505;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: "";
+    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.2] mix-blend-overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .dark body::before {
+    @apply opacity-[0.35] brightness-50;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/60 backdrop-blur-xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.05)] transition-all duration-500;
+  }
+  
+  .dark .glass {
+    @apply bg-white/[0.03] border-white/5 text-white/90 shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+  }
+  
+  .glass-dark {
+    @apply bg-brand-dark rounded-[32px] p-8 text-white transition-all duration-500;
+  }
+
+  .dark .glass-dark {
+    @apply bg-brand-green/5 border border-brand-green/10;
+  }
+
+  .outline-text-green {
+    -webkit-text-stroke: 1px #10B981;
+    color: transparent;
+  }
+
+  .card-3d {
+    @apply transition-all duration-300 transform-gpu hover:-translate-y-2 hover:shadow-xl active:scale-95;
+  }
+  
+  .btn-primary {
+    @apply bg-brand-dark text-white px-10 py-4 rounded-xl font-black uppercase tracking-[0.2em] text-[11px] transition-all duration-300 shadow-xl hover:shadow-brand-dark/20 active:scale-95;
+  }
+  
+  .dark .btn-primary {
+    @apply bg-brand-green text-brand-dark shadow-brand-green/20 font-black;
+  }
+  
+  .badge-primary {
+    @apply px-4 py-1.5 bg-brand-green text-brand-dark text-[10px] font-black rounded-full uppercase tracking-widest;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-cream transition-colors duration-500;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-green rounded-full transition-colors duration-500;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-brand-green/50 hover:bg-brand-green;
+}

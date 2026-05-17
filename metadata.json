@@ -1,0 +1,8 @@
+{
+  "name": "Aditia Portfolio - 3D Cartoon Style",
+  "description": "A vibrant, 3D cartoon-styled personal portfolio for Aditia, featuring glassmorphism, smooth animations, and high-quality UI/UX showcases.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
